@@ -1,0 +1,121 @@
+/* PLEASE NOTE: THESE TAILWIND IMPORTS SHOULD NEVER BE DELETED */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+/* DO NOT DELETE THESE TAILWIND IMPORTS, OTHERWISE THE STYLING WILL NOT RENDER AT ALL */
+/* Design System Variables */
+:root {
+  --background-light: #F9FAFB;
+  --background-dark: #0F1116;
+  --card-light: #FFFFFF;
+  --card-dark: #1C1E27;
+  --text-primary-light: #1F2937;
+  --text-primary-dark: #F4F4F4;
+  --text-secondary-light: #6B7280;
+  --text-secondary-dark: #9CA3AF;
+  --primary: #00A7E1;
+  --alert-warning: #F39C12;
+  --alert-error: #E83E8C;
+  --border-light: #E5E7EB;
+  --border-dark: #2A2C34;
+  /* Glassmorphism variables */
+  --glass-bg-light: rgba(255, 255, 255, 0.25);
+  --glass-bg-dark: rgba(0, 0, 0, 0.25);
+  --glass-border-light: rgba(255, 255, 255, 0.15);
+  --glass-border-dark: rgba(255, 255, 255, 0.05);
+  --glass-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+/* Base styles */
+body {
+  @apply antialiased;
+  -webkit-tap-highlight-color: transparent;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+html, #root {
+  height: 100%;
+  width: 100%;
+}
+/* Light mode styles */
+.light {
+  --background: var(--background-light);
+  --card: var(--card-light);
+  --text-primary: var(--text-primary-light);
+  --text-secondary: var(--text-secondary-light);
+  --border: var(--border-light);
+  --glass-bg: var(--glass-bg-light);
+  --glass-border: var(--glass-border-light);
+}
+/* Dark mode styles */
+.dark {
+  --background: var(--background-dark);
+  --card: var(--card-dark);
+  --text-primary: var(--text-primary-dark);
+  --text-secondary: var(--text-secondary-dark);
+  --border: var(--border-dark);
+  --glass-bg: var(--glass-bg-dark);
+  --glass-border: var(--glass-border-dark);
+}
+/* Input styles */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.5);
+}
+.dark input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+/* Accessibility focus styles */
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  @apply outline-none ring-2 ring-primary ring-opacity-50;
+}
+/* Glassmorphism utilities */
+.glass {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background-color: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+.glass-card {
+  @apply rounded-xl glass;
+}
+.glass-button {
+  @apply glass rounded-xl transition-all hover:opacity-90 active:scale-[0.98];
+}
+.glass-chip {
+  @apply glass rounded-full px-4 py-2 text-sm font-medium inline-flex items-center;
+}
+/* Map style utilities */
+.map-container {
+  @apply h-full w-full rounded-xl overflow-hidden;
+}
+.map-control {
+  @apply glass rounded-xl p-2 shadow-md z-10;
+}
+/* Animation utilities */
+.fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.slide-up {
+  animation: slideUp 0.3s ease-in-out;
+}
+@keyframes slideUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+/* Hide scrollbar but allow scrolling */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari and Opera */
+}
